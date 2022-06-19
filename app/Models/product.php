@@ -12,7 +12,5 @@ class product extends Model
     public function getclients(){
        return $this->belongsToMany('App\Models\client', 'facture');
     }
-   // public function getinv(){
-      //  return $this->belongsToMany('App\Models\inventaire');
-   // }
+ 
 }

@@ -11,3 +11,4 @@ class Notification extends Model
     use HasFactory;
 
 }
+

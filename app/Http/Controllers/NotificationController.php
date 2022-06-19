@@ -45,7 +45,7 @@ public function notificationecheance(){
    $z= Carbon::now()->format('Y-m-d');
 
 
-    $facf = DB::table('facturefs')->where([
+    $fact = DB::table('facturefs')->where([
         ['Etat', '<>', 'payé'],
         ['date_echeance', '<=',$k],
         ['date_echeance', '>=',$z]
@@ -54,7 +54,7 @@ public function notificationecheance(){
  
     ->get();
     $a=[];
-    foreach($facf as $e){
+    foreach($fact as $e){
     
         array_push($a,$e);
     
@@ -66,6 +66,34 @@ public function notificationecheance(){
         
         
     }
+    public function notificationecheancec(){
+       
+        $k= Carbon::now()->addDay(2)->format('Y-m-d');
+        $z= Carbon::now()->format('Y-m-d');
+     
+     
+         $facf = DB::table('factures')->where([
+             ['Etat', '<>', 'payé'],
+             ['date_echeance', '<=',$k],
+             ['date_echeance', '>=',$z]
+     
+         ])->get();
+         $a=[];
+         foreach($facf as $e){
+         
+             array_push($a,$e);
+         
+         }
+          
+         return response()->json($a,200);
+            
+         
+             
+             
+         }
+     
+     
+     
 
 
 
